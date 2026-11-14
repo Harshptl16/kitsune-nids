@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+
+# Captures and generated data: keep them in the shared drive, not in git
+*.pcap
+*.pcapng
+*.npy
+*.npz
+data/
+results/
+!tests/fixtures/*.pcap
+
+# Models and alert databases
+*.pkl
+*.joblib
+*.sqlite
+*.db
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store

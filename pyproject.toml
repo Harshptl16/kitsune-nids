@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kitsune-nids"
+version = "0.1.0"
+description = "Online network intrusion detection with an ensemble of autoencoders (course project)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "dpkt>=1.9.8",
+    "scapy>=2.5",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+fast = ["numba>=0.59"]
+ml = ["scikit-learn>=1.4"]
+dashboard = ["streamlit>=1.35"]
+
+[tool.setuptools.packages.find]
+include = ["nids*", "eval*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["nids", "eval", "conftest"]
