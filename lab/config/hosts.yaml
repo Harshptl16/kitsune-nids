@@ -1,0 +1,10 @@
+# Lab address plan (owner: Bhavya). Every script reads addresses from here or takes them as flags.
+network: 10.10.0.0/24
+internal_network_name: labnet      # VirtualBox internal network
+hosts:
+  gateway:  {ip: 10.10.0.1,  os: ubuntu-server-22.04, role: router + dnsmasq (DNS/DHCP)}
+  sensor:   {ip: 10.10.0.5,  os: ubuntu-22.04,        role: detector + dashboard, promiscuous allow-all}
+  server:   {ip: 10.10.0.10, os: ubuntu-server-22.04, role: victim - nginx, ssh}
+  client1:  {ip: 10.10.0.20, os: ubuntu-desktop-22.04, role: benign traffic}
+  client2:  {ip: 10.10.0.21, os: ubuntu-desktop-22.04, role: benign traffic}
+  attacker: {ip: 10.10.0.66, os: kali,                role: attack scripts}
