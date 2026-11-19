@@ -1,0 +1,19 @@
+# Default settings for every run (owner: Krishkumar). Override with --config.
+
+features:
+  lambdas: [5, 3, 1, 0.1, 0.01]   # decay rates; windows from ~100 ms to ~1 min
+  prune_every: 10000              # packets between stream-table prunes
+  prune_eps: 0.001                # drop a stream when its slowest-lambda weight falls below this
+  max_streams: 500000             # hard cap on tracked streams
+
+model:                            # used from Phase 2
+  max_group_size: 10              # m: features per autoencoder
+  fm_grace: 5000                  # packets used to learn the feature map
+  ad_grace: 50000                 # packets used to train the autoencoders
+  hidden_ratio: 0.75
+  learning_rate: 0.1
+
+detect:                           # used from Phase 3
+  threshold_quantile: 0.999       # of log scores on the benign validation capture
+  debounce_k: 5                   # alert when k of the last n packets exceed the threshold
+  debounce_n: 50
