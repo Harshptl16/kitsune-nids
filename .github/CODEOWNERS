@@ -1,0 +1,24 @@
+
+# Each path's owner is asked to review any pull request that touches it.
+
+*                         @Harshptl16
+
+/nids/__init__.py          @Harshptl16
+/nids/features/incstat.py  @Harshptl16
+/tests/test_incstat.py     @Harshptl16
+
+/nids/capture/             @Vraj2003v
+/tests/conftest.py         @Vraj2003v
+/tests/test_capture.py     @Vraj2003v
+
+/nids/features/streams.py   @Krish-1710
+/nids/features/extractor.py @Krish-1710
+/nids/config.py             @Krish-1710
+/configs/                   @Krish-1710
+/tests/test_extractor.py    @Krish-1710
+
+/lab/                      @bhavyapatel0201
+/CONTRIBUTING.md           @bhavyapatel0201
+
+/eval/                     @Rajbeer-117
+/.github/                  @Rajbeer-117
