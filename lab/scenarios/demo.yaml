@@ -1,0 +1,13 @@
+# Demo scenario (owner: Bhavya): benign, then a port scan, then ARP spoofing.
+# Run on the Kali attacker VM while the sensor captures and the clients send benign traffic.
+#   python3 lab/run_scenario.py lab/scenarios/demo.yaml --dry-run   # check the plan
+#   sudo python3 lab/run_scenario.py lab/scenarios/demo.yaml        # run it
+name: demo
+steps:
+  - gap: 90                      # let the model train on benign traffic first
+  - attack: portscan
+    args: ["--target", "10.10.0.10", "--mode", "syn", "--ports", "1-1024"]
+  - gap: 60                      # back to benign, let the score settle
+  - attack: arpspoof
+    args: ["--victim", "10.10.0.20", "--gateway", "10.10.0.1", "--mode", "mitm", "--duration", "60"]
+  - gap: 30
