@@ -22,7 +22,7 @@ ml = ["scikit-learn>=1.4"]
 dashboard = ["streamlit>=1.35"]
 
 [tool.setuptools.packages.find]
-include = ["nids*", "eval*"]
+include = ["nids*", "eval*", "dashboard*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
