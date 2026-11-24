@@ -16,13 +16,13 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.5"]
+dev = ["pytest>=8", "ruff>=0.5", "scikit-learn>=1.4"]
 fast = ["numba>=0.59"]
 ml = ["scikit-learn>=1.4"]
 dashboard = ["streamlit>=1.35"]
 
 [tool.setuptools.packages.find]
-include = ["nids*", "eval*", "dashboard*"]
+include = ["nids*", "eval*", "dashboard*", "baselines*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -36,4 +36,4 @@ target-version = "py310"
 select = ["E", "F", "I", "B", "UP"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["nids", "eval", "conftest"]
+known-first-party = ["nids", "eval", "baselines", "conftest"]
