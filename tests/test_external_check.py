@@ -38,6 +38,14 @@ def test_read_rows_and_labels(tmp_path):
     assert read_labels(labs).tolist() == [0] * 10 + [1] * 5
 
 
+def test_labels_with_header_and_index_column(tmp_path):
+    """The Kaggle copy of the labels has a header ("","x") and a row-number column."""
+    labs = tmp_path / "labs.csv"
+    labs.write_text('"","x"\n"1",0\n"2",0\n"3",1\n')
+    assert read_labels(labs).tolist() == [0, 0, 1]
+    assert read_labels(labs, limit=2).tolist() == [0, 0]
+
+
 def test_limit(tmp_path):
     feats, labs = write_dataset(tmp_path, 10, 5)
     assert len(list(read_rows(feats, limit=8))) == 8

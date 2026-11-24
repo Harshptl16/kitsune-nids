@@ -36,10 +36,13 @@ def read_rows(path: str | Path, limit: int | None = None):
 def read_labels(path: str | Path, limit: int | None = None) -> np.ndarray:
     vals = []
     with open(path, newline="") as fh:
-        for i, row in enumerate(csv.reader(fh)):
-            if limit is not None and i >= limit:
+        for row in csv.reader(fh):
+            if limit is not None and len(vals) >= limit:
                 break
-            vals.append(int(float(row[-1])))     # label is the last (often only) column
+            try:
+                vals.append(int(float(row[-1])))  # label is the last (often only) column
+            except ValueError:
+                continue                          # header row, e.g. "","x" in the Kaggle copy
     return np.array(vals)
 
 
